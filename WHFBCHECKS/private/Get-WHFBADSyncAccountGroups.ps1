@@ -11,5 +11,5 @@ function Get-WHFBADSyncAccountGroups {
         [string]
         $username
     )
-    Get-ADPrincipalGroupMembership $username | Select-Object Name
+    Get-ADPrincipalGroupMembership -Identity $username -Server (Get-ADDomain -Current LocalComputer).PDCEmulator | Select-Object Name
 }
